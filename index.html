@@ -13,17 +13,44 @@
     :root {
       --bg: #f1f5f9;
       --card: #ffffff;
+      --subcard: #fafafa;
+      --header-bg: #1e293b;
+      --card-hdr: #e2e8f0;
+      --card-hdr-text: #1e293b;
       --primary: #1e293b;
       --accent: #0284c7;
       --accent-light: #e0f2fe;
+      --accent-border: #bae6fd;
       --success: #16a34a;
-      --success-hover: #15803d;
       --warning: #d97706;
       --danger: #dc2626;
       --border: #cbd5e1;
+      --border-soft: #e2e8f0;
+      --input-bg: #ffffff;
+      --readonly-bg: #f8fafc;
       --text: #0f172a;
       --muted: #64748b;
       --gray-soft: #94a3b8;
+    }
+
+    body.dark-mode {
+      --bg: #000000;
+      --card: #0a0a0a;
+      --subcard: #121212;
+      --header-bg: #000000;
+      --card-hdr: #1a1a1a;
+      --card-hdr-text: #f1f5f9;
+      --primary: #1e293b;
+      --accent: #38bdf8;
+      --accent-light: #082f49;
+      --accent-border: #0369a1;
+      --border: #262626;
+      --border-soft: #1f1f1f;
+      --input-bg: #141414;
+      --readonly-bg: #1a1a1a;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --gray-soft: #64748b;
     }
 
     * {
@@ -38,11 +65,12 @@
       color: var(--text);
       padding-bottom: 92px;
       -webkit-tap-highlight-color: transparent;
+      transition: background-color 0.2s, color 0.2s;
     }
 
     /* Header */
     header {
-      background: var(--primary);
+      background: var(--header-bg);
       color: #fff;
       padding: 12px 16px;
       position: sticky;
@@ -51,7 +79,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     }
 
     .header-title {
@@ -118,7 +147,7 @@
     /* Tabs */
     .tabs {
       display: flex;
-      background: #fff;
+      background: var(--card);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 62px;
@@ -142,7 +171,7 @@
     .tab-btn.active {
       color: var(--accent);
       border-bottom-color: var(--accent);
-      background: #f8fafc;
+      background: var(--subcard);
     }
 
     /* Container */
@@ -171,8 +200,8 @@
     }
 
     .card-header {
-      background: #e2e8f0;
-      color: var(--primary);
+      background: var(--card-hdr);
+      color: var(--card-hdr-text);
       font-weight: 700;
       font-size: 0.82rem;
       text-transform: uppercase;
@@ -187,8 +216,13 @@
     }
 
     .card-header.dark {
-      background: var(--primary);
+      background: #1e293b;
       color: #fff;
+    }
+
+    body.dark-mode .card-header.dark {
+      background: #171717;
+      border: 1px solid #262626;
     }
 
     .req-star {
@@ -234,36 +268,41 @@
       border-radius: 8px;
       font-size: 0.95rem;
       color: var(--text);
-      background: #fff;
+      background: var(--input-bg);
       transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    body.dark-mode input[type="date"],
+    body.dark-mode input[type="time"] {
+      color-scheme: dark;
     }
 
     input:focus,
     textarea:focus {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
     }
 
     input[readonly] {
-      background: #f8fafc;
+      background: var(--readonly-bg);
       font-weight: 700;
-      color: var(--primary);
+      color: var(--text);
     }
 
     .field-error {
       border: 2px solid var(--danger) !important;
-      background-color: #fef2f2 !important;
-      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.18) !important;
+      background-color: rgba(220, 38, 38, 0.14) !important;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2) !important;
     }
 
     /* Service rows */
     .service-item {
-      border: 1px solid #e2e8f0;
+      border: 1px solid var(--border-soft);
       border-radius: 10px;
       padding: 10px;
       margin-bottom: 10px;
-      background: #fafafa;
+      background: var(--subcard);
     }
 
     .service-top {
@@ -274,12 +313,17 @@
     }
 
     .badge {
-      background: var(--primary);
+      background: #1e293b;
       color: #fff;
       font-size: 0.75rem;
       font-weight: 700;
       padding: 2px 8px;
       border-radius: 6px;
+    }
+
+    body.dark-mode .badge {
+      background: #262626;
+      color: #f8fafc;
     }
 
     .type-checks {
@@ -296,6 +340,7 @@
       font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
+      color: var(--text);
     }
 
     .check-pill input {
@@ -320,7 +365,7 @@
     /* Hours summary box */
     .hours-summary {
       background: var(--accent-light);
-      border: 1px solid #bae6fd;
+      border: 1px solid var(--accent-border);
       border-radius: 10px;
       padding: 12px;
       display: grid;
@@ -330,11 +375,16 @@
     }
 
     .hours-summary .total-box {
-      background: var(--primary);
+      background: #1e293b;
       color: #fff;
       padding: 8px 10px;
       border-radius: 8px;
       text-align: center;
+    }
+
+    body.dark-mode .hours-summary .total-box {
+      background: #000000;
+      border: 1px solid var(--accent-border);
     }
 
     .hours-summary .total-box small {
@@ -349,16 +399,16 @@
 
     .auto-hint {
       font-size: 0.75rem;
-      color: #0369a1;
+      color: var(--accent);
       margin-top: 6px;
       font-weight: 600;
       line-height: 1.35;
     }
 
     .auto-hint.warn {
-      color: #b45309;
-      background: #fffbeb;
-      border: 1px solid #fde68a;
+      color: #d97706;
+      background: rgba(217, 119, 6, 0.12);
+      border: 1px solid rgba(217, 119, 6, 0.35);
       padding: 6px 9px;
       border-radius: 7px;
     }
@@ -375,12 +425,13 @@
       align-items: center;
       gap: 8px;
       padding: 8px;
-      border: 1px solid #e2e8f0;
+      border: 1px solid var(--border-soft);
       border-radius: 8px;
       font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
-      background: #fff;
+      background: var(--input-bg);
+      color: var(--text);
       transition: background 0.15s, border-color 0.15s;
     }
 
@@ -388,6 +439,12 @@
       background: #f0fdf4;
       border-color: #86efac;
       color: #14532d;
+    }
+
+    body.dark-mode .plus-item.checked-highlight {
+      background: #052e16;
+      border-color: #16a34a;
+      color: #86efac;
     }
 
     .plus-item input[type="checkbox"] {
@@ -404,13 +461,13 @@
       align-items: center;
       gap: 8px;
       padding: 6px 0;
-      border-bottom: 1px solid #f1f5f9;
+      border-bottom: 1px solid var(--border-soft);
     }
 
     .denom-label {
       font-weight: 700;
       font-size: 0.92rem;
-      color: var(--primary);
+      color: var(--text);
       text-align: right;
       padding-right: 6px;
     }
@@ -423,8 +480,8 @@
     }
 
     .total-banner {
-      background: #f8fafc;
-      border: 2px solid var(--primary);
+      background: var(--readonly-bg);
+      border: 2px solid var(--border);
       border-radius: 10px;
       padding: 12px 14px;
       margin: 12px 0;
@@ -434,8 +491,14 @@
     }
 
     .total-banner.final {
-      background: var(--primary);
+      background: #1e293b;
+      border-color: #1e293b;
       color: #fff;
+    }
+
+    body.dark-mode .total-banner.final {
+      background: #000000;
+      border-color: var(--accent);
     }
 
     .total-banner span {
@@ -456,11 +519,11 @@
 
     /* Vehicle cards */
     .vehicle-block {
-      border: 1px solid #e2e8f0;
+      border: 1px solid var(--border-soft);
       border-radius: 10px;
       padding: 10px;
       margin-bottom: 10px;
-      background: #fafafa;
+      background: var(--subcard);
     }
 
     .station-grid {
@@ -479,12 +542,12 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       margin-bottom: 8px;
-      background: #fff;
+      background: var(--input-bg);
     }
 
     .history-item.active-edit {
       border: 2px solid var(--warning);
-      background: #fffbeb;
+      background: rgba(217, 119, 6, 0.12);
     }
 
     .history-info strong {
@@ -508,13 +571,13 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: #fff;
+      background: var(--card);
       border-top: 1px solid var(--border);
       padding: 10px 14px;
       display: flex;
       gap: 10px;
       z-index: 95;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.12);
     }
 
     .btn {
@@ -536,6 +599,10 @@
       color: #fff;
     }
 
+    body.dark-mode .btn-primary {
+      color: #000;
+    }
+
     .btn-success {
       background: var(--success);
       color: #fff;
@@ -547,8 +614,8 @@
     }
 
     .btn-outline {
-      background: #f1f5f9;
-      color: var(--primary);
+      background: var(--readonly-bg);
+      color: var(--text);
       border: 1px solid var(--border);
       flex: 0.6;
     }
@@ -579,7 +646,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(0, 0, 0, 0.78);
       display: none;
       align-items: center;
       justify-content: center;
@@ -592,27 +659,33 @@
     }
 
     .modal-card {
-      background: #fff;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
       border-radius: 16px;
       max-width: 460px;
       width: 100%;
       padding: 20px;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.35);
       max-height: 85vh;
       overflow-y: auto;
     }
 
     .modal-card h2 {
       font-size: 1.15rem;
-      color: var(--primary);
+      color: var(--text);
       margin-bottom: 10px;
     }
 
     .modal-card p, .modal-card li {
       font-size: 0.88rem;
-      color: #334155;
+      color: var(--muted);
       line-height: 1.45;
       margin-bottom: 8px;
+    }
+
+    .modal-card strong {
+      color: var(--text);
     }
 
     .modal-card ul {
@@ -638,7 +711,8 @@
       transition: opacity 0.25s;
       max-width: 92vw;
       text-align: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
     }
 
     .toast.show {
@@ -659,7 +733,7 @@
 
     .summary-table td {
       padding: 6px 8px;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid var(--border-soft);
     }
 
     .summary-table td:last-child {
@@ -679,6 +753,10 @@
       </div>
     </div>
     <div class="header-actions">
+      <button type="button" class="btn-icon" id="btnThemeToggle" title="Modo Nocturno" aria-label="Alternar modo oscuro">
+        <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
       <button type="button" class="btn-icon" id="btnHelp" title="Instrucciones">?</button>
     </div>
   </header>
@@ -740,8 +818,9 @@
           <span id="subtotalServiciosBadge">0,00 h</span>
         </div>
         <p style="font-size:0.76rem; color:var(--muted); margin-bottom:10px;">
-          Rellena solo los servicios realizados (mínimo 1). Cada servicio con hora requiere marcar <b>R</b>, <b>Esc</b> o <b>D</b>.
+          Rellena solo los servicios realizados (mínimo 1). Cada servicio con hora requiere marcar <b>R</b>, <b>Esc</b> o <b>D</b>. Los nombres de turno que escribas se guardan solos para elegirlos rápido la próxima vez.
         </p>
+        <datalist id="turnosGuardadosList"></datalist>
         <div id="serviciosContainer"></div>
 
         <div class="hours-summary">
@@ -858,7 +937,7 @@
           <input type="text" id="objObs">
         </div>
 
-        <hr style="border:none; border-top:1px solid #e2e8f0; margin:12px 0;">
+        <hr style="border:none; border-top:1px solid var(--border-soft); margin:12px 0;">
 
         <div class="form-group">
           <label>Solicitud Libro de Reclamaciones</label>
@@ -878,7 +957,7 @@
           </div>
         </div>
 
-        <hr style="border:none; border-top:1px solid #e2e8f0; margin:12px 0;">
+        <hr style="border:none; border-top:1px solid var(--border-soft); margin:12px 0;">
 
         <div class="grid-2">
           <div class="form-group">
@@ -961,10 +1040,10 @@
       <h2>Parte Diario Pro v1.3.0</h2>
       <p>Motor calibrado con las reglas exactas de jornada, cortes, dietas y liquidación:</p>
       <ul>
+        <li><strong>Memoria de Turnos Frecuentes:</strong> Cada nombre de turno que escribes en <em>Descripción Servicio</em> se guarda en el móvil para seleccionarlo al toque la próxima vez.</li>
         <li><strong>Bloques continuos vs. Partido (120 min):</strong> Servicios seguidos o con hueco menor a 120 min forman un bloque continuo. Entre 120 y 240 min cuenta como turno partido (marca <em>Plus Turno Partido</em> si incluye <strong>R</strong> o <strong>D</strong>; nunca si es solo escolar <strong>Esc</strong>).</li>
-        <li><strong>Dieta Comida:</strong> Se marca si un bloque continuo supera <strong>9,00 h reales</strong> terminando a las 15:00 o después, o supera <strong>6,00 h reales</strong> terminando a las 15:30 o después.</li>
-        <li><strong>Dieta Cena y Nocturnidad:</strong> Cena si trabajas <strong>≥ 6,00 h</strong> en el tramo desde las 13:00 terminando a las 23:00 o después. Nocturnidad solo sobre horas de <strong>Servicio</strong> (22:00–06:00).</li>
-        <li><strong>Validación y Corrección:</strong> No deja guardar si falta Nombre, Fichaje 1, Servicio con tipo (<strong>R/Esc/D</strong>) o Bus Nº. Puedes abrir cualquier parte guardado en <em>Historial</em> para corregirlo.</li>
+        <li><strong>Dieta Comida:</strong> Solo en turno de mañana/mediodía (empezando antes de las 13:00): bloque continuo de <strong>&gt; 9,00 h reales</strong> terminando a las 15:00 o después, o <strong>&gt; 6,00 h reales</strong> en la franja de mañana terminando a las 15:30 o después.</li>
+        <li><strong>Guardado limpio y Edición:</strong> Al pulsar <em>Guardar Parte</em> se archiva en <em>Historial</em> y deja la hoja vacía para el siguiente día. Para modificar un parte ya guardado, ábrelo desde <em>Historial</em>.</li>
       </ul>
       <button type="button" id="btnEntendido" class="btn btn-success" style="width:100%;">¡Entendido!</button>
     </div>
@@ -975,7 +1054,7 @@
     <div class="modal-card">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
         <h2 style="margin:0;">Resumen para Ordenador</h2>
-        <button type="button" class="btn-sm" id="btnCerrarResumen" style="background:#e2e8f0;">Cerrar</button>
+        <button type="button" class="btn-sm" id="btnCerrarResumen" style="background:var(--card-hdr); color:var(--text);">Cerrar</button>
       </div>
       <div id="resumenContenido"></div>
       <button type="button" id="btnCopiarResumen" class="btn btn-primary" style="width:100%; margin-top:8px;">Copiar Texto</button>
@@ -996,6 +1075,7 @@
       let db = null;
       let currentParteId = null;
       let isEditingSaved = false;
+      let savedTurnosList = [];
 
       let manualAjuste = false;
       let manualPluses = {
@@ -1065,6 +1145,35 @@
         });
       }
 
+      function renderTurnosDatalist() {
+        const datalist = document.getElementById('turnosGuardadosList');
+        if (!datalist) return;
+        datalist.innerHTML = '';
+        savedTurnosList.forEach(nombre => {
+          const opt = document.createElement('option');
+          opt.value = nombre;
+          datalist.appendChild(opt);
+        });
+      }
+
+      async function rememberTurnoDesc(rawText) {
+        const clean = (rawText || '').trim().replace(/\s+/g, ' ');
+        if (clean.length < 2) return;
+        const lower = clean.toLowerCase();
+        const filtered = savedTurnosList.filter(item => item.toLowerCase() !== lower);
+        savedTurnosList = [clean, ...filtered].slice(0, 80);
+        renderTurnosDatalist();
+        await dbPut(STORE_CONFIG, { key: 'saved_turnos_desc', value: savedTurnosList });
+      }
+
+      function applyTheme(isDark) {
+        document.body.classList.toggle('dark-mode', isDark);
+        document.getElementById('iconMoon').style.display = isDark ? 'none' : 'block';
+        document.getElementById('iconSun').style.display = isDark ? 'block' : 'none';
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+        if (metaTheme) metaTheme.setAttribute('content', isDark ? '#000000' : '#1e293b');
+      }
+
       function formatNum(num) {
         return Number(num || 0).toLocaleString('es-ES', {
           minimumFractionDigits: 2,
@@ -1087,12 +1196,10 @@
         return Math.round((diff / 60) * 100) / 100;
       }
 
-      // Solapamiento en minutos entre [aStart, aEnd] y [bStart, bEnd]
       function overlapMinutes(aStart, aEnd, bStart, bEnd) {
         return Math.max(0, Math.min(aEnd, bEnd) - Math.max(aStart, bStart));
       }
 
-      // Comprobar nocturnidad (22:00 a 06:00) estrictamente en servicios
       function hasNightTime(startStr, endStr) {
         const m1 = timeToMinutes(startStr);
         const m2 = timeToMinutes(endStr);
@@ -1150,7 +1257,6 @@
         showToast(message, true);
       }
 
-      // Validación estricta antes de guardar el parte
       function validarParteObligatorio() {
         clearFieldErrors();
 
@@ -1280,7 +1386,7 @@
               </div>
               <div>
                 <label>Descripción Servicio</label>
-                <input type="text" id="srvDesc_${i}" placeholder="Ej: ESC FP IES PASQ CALBO">
+                <input type="text" id="srvDesc_${i}" list="turnosGuardadosList" autocomplete="off" placeholder="Ej: ESC FP IES PASQ CALBO">
               </div>
             </div>
           `;
@@ -1381,7 +1487,6 @@
         const ajusteMsg = document.getElementById('ajusteAutoMsg');
         const corteAvisoEl = document.getElementById('corteAvisoMsg');
 
-        // 1. Ajuste mínimo a 6,00 horas si hay servicios > 0 y suma < 6
         if (!manualAjuste) {
           if (sumaServicios > 0 && sumaServicios < 6) {
             const diffMin = Math.round((6 - sumaServicios) * 100) / 100;
@@ -1398,13 +1503,12 @@
         const ajusteActual = parseFloat(ajusteInput.value) || 0;
         const totalHoras = Math.round((sumaServicios + ajusteActual) * 100) / 100;
 
-        // 2. Normalizar intervalos de servicios completos y ordenar cronológicamente
         const tramos = serviciosActivos
           .filter(s => s.inicio && s.fin)
           .map(s => {
             const m1 = timeToMinutes(s.inicio);
             let m2 = timeToMinutes(s.fin);
-            if (m2 <= m1) m2 += 1440; // cruce medianoche
+            if (m2 <= m1) m2 += 1440;
             return {
               ...s,
               startMin: m1,
@@ -1414,11 +1518,9 @@
           })
           .sort((a, b) => a.startMin - b.startMin);
 
-        // 3. Agrupar en Bloques Continuos:
-        //    Si el hueco entre servicios es < 120 minutos (2 horas), forman un mismo bloque continuo.
-        //    Si el hueco es >= 120 minutos, inicia un bloque distinto (turno partido).
+        // Agrupar en Bloques Continuos (hueco < 120 min = mismo bloque)
         const bloques = [];
-        const cortesPartido = []; // huecos >= 120 min
+        const cortesPartido = [];
 
         tramos.forEach(t => {
           if (bloques.length === 0) {
@@ -1432,12 +1534,10 @@
             const prev = bloques[bloques.length - 1];
             const gapMin = t.startMin - prev.endMin;
             if (gapMin < 120) {
-              // Mismo bloque continuo (jornada continua)
               prev.endMin = Math.max(prev.endMin, t.endMin);
               prev.workMin += t.workMin;
               prev.servicios.push(t);
             } else {
-              // Nuevo bloque -> Corte >= 120 min (Turno Partido)
               cortesPartido.push(gapMin);
               bloques.push({
                 startMin: t.startMin,
@@ -1449,33 +1549,36 @@
           }
         });
 
-        // 4. Evaluar Dieta Comida por cada Bloque Continuo:
-        //    - Bloque continuo > 9,00 horas reales (> 540 min) Y termina a las 15:00 (900 min) o después
-        //    - O Bloque continuo > 6,00 horas reales (> 360 min) Y termina a las 15:30 (930 min) o después
+        // Evaluar Dieta Comida por cada Bloque Continuo (turno de mañana/mediodía, inicio < 13:00):
         let autoComida = false;
         let motivoComida = '';
         bloques.forEach((b, idx) => {
-          const workHours = b.workMin / 60;
-          if (workHours > 9 && b.endMin >= 900) {
-            autoComida = true;
-            motivoComida = `Dieta Comida (Bloque ${idx + 1}: ${formatNum(workHours)}h seguidas, fin ≥15:00)`;
-          } else if (workHours > 6 && b.endMin >= 930) {
-            autoComida = true;
-            motivoComida = `Dieta Comida (Bloque ${idx + 1}: ${formatNum(workHours)}h seguidas, fin ≥15:30)`;
+          if (b.startMin < 780) {
+            const workHours = b.workMin / 60;
+            let minMananaMediodia = 0;
+            b.servicios.forEach(s => {
+              minMananaMediodia += overlapMinutes(s.startMin, s.endMin, 0, 990);
+            });
+            const hoursMananaMediodia = minMananaMediodia / 60;
+
+            if (workHours > 9 && b.endMin >= 900) {
+              autoComida = true;
+              motivoComida = `Dieta Comida (Bloque ${idx + 1}: ${formatNum(workHours)}h seguidas, fin ≥15:00)`;
+            } else if (hoursMananaMediodia > 6 && b.endMin >= 930) {
+              autoComida = true;
+              motivoComida = `Dieta Comida (Bloque ${idx + 1}: ${formatNum(hoursMananaMediodia)}h mañana/mediodía, fin ≥15:30)`;
+            }
           }
         });
         if (!manualPluses.dietaComida) {
           document.getElementById('plusDietaComida').checked = autoComida;
         }
 
-        // 5. Evaluar Dieta Cena:
-        //    - En el tramo desde las 13:00 (780 min) en adelante:
-        //      haber trabajado >= 6,00 horas reales (360 min) dentro de ese tramo Y terminar a las 23:00 (1380 min) o después.
+        // Evaluar Dieta Cena:
         let minTrabajadosDesde13 = 0;
         let maxEndMin = 0;
         tramos.forEach(t => {
           if (t.endMin > maxEndMin) maxEndMin = t.endMin;
-          // Solapamiento desde las 13:00 (780) hasta el final de la jornada (ej: 30:00 = 1800)
           minTrabajadosDesde13 += overlapMinutes(t.startMin, t.endMin, 780, 1800);
         });
 
@@ -1489,13 +1592,13 @@
           document.getElementById('plusDietaCena').checked = autoCena;
         }
 
-        // 6. Evaluar Nocturnidad (22:00 a 06:00) EXCLUSIVAMENTE sobre los horarios de Servicio:
+        // Evaluar Nocturnidad (22:00 a 06:00) EXCLUSIVAMENTE sobre horarios de Servicio
         const hasNight = tramos.some(t => hasNightTime(t.inicio, t.fin));
         if (!manualPluses.nocturnidad) {
           document.getElementById('plusNocturnidad').checked = hasNight;
         }
 
-        // 7. Evaluar Plus Turno Partido y Aviso de Corte (120 a 240 min / > 240 min):
+        // Evaluar Plus Turno Partido y Aviso de Corte (120 a 240 min / > 240 min)
         let autoPartido = false;
         let motivoPartido = '';
         let avisoCorteTexto = '';
@@ -1939,13 +2042,30 @@
         data.descuentos.filter(d => d.concepto || Number(d.importe) !== 0).forEach(d => {
           html += `<tr><td>Desc: ${d.concepto || 'Ajuste'}</td><td>-${formatNum(d.importe)} €</td></tr>`;
         });
-        html += `<tr style="background:#e0f2fe;"><td><strong>TOTAL FINAL</strong></td><td><strong>${data.totalFinalTexto}</strong></td></tr></table>`;
+        html += `<tr style="background:var(--accent-light);"><td><strong>TOTAL FINAL</strong></td><td><strong>${data.totalFinalTexto}</strong></td></tr></table>`;
         return html;
       }
 
       document.addEventListener('DOMContentLoaded', async () => {
         buildUI();
         await initDB();
+
+        // Cargar nombres de turnos guardados anteriormente en IndexedDB
+        const turnosCfg = await dbGet(STORE_CONFIG, 'saved_turnos_desc');
+        if (turnosCfg && Array.isArray(turnosCfg.value)) {
+          savedTurnosList = turnosCfg.value;
+          renderTurnosDatalist();
+        }
+
+        const themeCfg = await dbGet(STORE_CONFIG, 'dark_mode');
+        applyTheme(!!(themeCfg && themeCfg.value));
+
+        document.getElementById('btnThemeToggle').addEventListener('click', async () => {
+          const nextDark = !document.body.classList.contains('dark-mode');
+          applyTheme(nextDark);
+          await dbPut(STORE_CONFIG, { key: 'dark_mode', value: nextDark });
+          showToast(nextDark ? 'Modo oscuro activado' : 'Modo claro activado');
+        });
 
         const tutSeen = await dbGet(STORE_CONFIG, 'tutorial_seen_v1');
         if (!tutSeen || !tutSeen.value) {
@@ -1995,6 +2115,9 @@
             const parentChecks = e.target.closest('.type-checks');
             if (parentChecks) parentChecks.classList.remove('field-error');
             if (e.target.id === 'ajusteHoras') manualAjuste = true;
+            if (e.type === 'change' && e.target.id && e.target.id.startsWith('srvDesc_')) {
+              await rememberTurnoDesc(e.target.value);
+            }
           }
           recalcularTodo();
           const data = collectFormData();
@@ -2007,18 +2130,27 @@
         document.body.addEventListener('input', handleAutoSave);
         document.body.addEventListener('change', handleAutoSave);
 
+        // Guardar o Actualizar parte y dejar la hoja limpia lista para el siguiente día
         document.getElementById('btnGuardarParte').addEventListener('click', async () => {
           if (!validarParteObligatorio()) return;
 
           const data = collectFormData();
-          currentParteId = data.id;
-          isEditingSaved = true;
-          data.isEditingSaved = true;
+          for (const s of data.servicios) {
+            if (s.desc) await rememberTurnoDesc(s.desc);
+          }
+
+          const wasEditing = isEditingSaved;
+          data.isEditingSaved = false;
 
           await dbPut(STORE_PARTES, data);
-          await dbPut(STORE_CONFIG, { key: 'current_draft', value: data });
-          updateEditModeUI();
-          showToast('Parte guardado correctamente');
+          if (data.nombre) {
+            await dbPut(STORE_CONFIG, { key: 'conductorNombre', value: data.nombre });
+          }
+
+          await resetNuevoParte();
+          await dbPut(STORE_CONFIG, { key: 'current_draft', value: collectFormData() });
+          switchTab('tab-jornada');
+          showToast(wasEditing ? 'Parte actualizado en el historial' : 'Parte guardado en el historial');
         });
 
         document.getElementById('btnNuevoParte').addEventListener('click', async () => {
