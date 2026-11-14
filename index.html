@@ -34,23 +34,23 @@
     }
 
     body.dark-mode {
-      --bg: #000000;
-      --card: #0a0a0a;
-      --subcard: #121212;
-      --header-bg: #000000;
-      --card-hdr: #1a1a1a;
-      --card-hdr-text: #f1f5f9;
-      --primary: #1e293b;
+      --bg: #18181b;
+      --card: #222226;
+      --subcard: #27272c;
+      --header-bg: #141417;
+      --card-hdr: #2e2e34;
+      --card-hdr-text: #f4f4f5;
+      --primary: #27272a;
       --accent: #38bdf8;
-      --accent-light: #082f49;
-      --accent-border: #0369a1;
-      --border: #262626;
-      --border-soft: #1f1f1f;
-      --input-bg: #141414;
-      --readonly-bg: #1a1a1a;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --gray-soft: #64748b;
+      --accent-light: #1e293b;
+      --accent-border: #0284c7;
+      --border: #3f3f46;
+      --border-soft: #323238;
+      --input-bg: #2a2a30;
+      --readonly-bg: #242429;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --gray-soft: #71717a;
     }
 
     * {
@@ -99,7 +99,7 @@
       align-items: center;
       gap: 8px;
       font-size: 0.72rem;
-      color: #94a3b8;
+      color: #a1a1aa;
     }
 
     .draft-pill {
@@ -221,8 +221,8 @@
     }
 
     body.dark-mode .card-header.dark {
-      background: #171717;
-      border: 1px solid #262626;
+      background: #2e2e34;
+      border: 1px solid #3f3f46;
     }
 
     .req-star {
@@ -322,8 +322,8 @@
     }
 
     body.dark-mode .badge {
-      background: #262626;
-      color: #f8fafc;
+      background: #3f3f46;
+      color: #f4f4f5;
     }
 
     .type-checks {
@@ -383,7 +383,7 @@
     }
 
     body.dark-mode .hours-summary .total-box {
-      background: #000000;
+      background: #18181b;
       border: 1px solid var(--accent-border);
     }
 
@@ -423,16 +423,23 @@
     .plus-item {
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
+      gap: 6px;
       padding: 8px;
       border: 1px solid var(--border-soft);
       border-radius: 8px;
-      font-size: 0.82rem;
+      font-size: 0.81rem;
       font-weight: 600;
       cursor: pointer;
       background: var(--input-bg);
       color: var(--text);
       transition: background 0.15s, border-color 0.15s;
+    }
+
+    .plus-item-left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
     }
 
     .plus-item.checked-highlight {
@@ -442,9 +449,9 @@
     }
 
     body.dark-mode .plus-item.checked-highlight {
-      background: #052e16;
-      border-color: #16a34a;
-      color: #86efac;
+      background: #143622;
+      border-color: #22c55e;
+      color: #bbf7d0;
     }
 
     .plus-item input[type="checkbox"] {
@@ -452,6 +459,15 @@
       height: 18px;
       accent-color: var(--accent);
       flex-shrink: 0;
+    }
+
+    .plus-hrs-input {
+      width: 56px !important;
+      padding: 4px 5px !important;
+      font-size: 0.8rem !important;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 6px !important;
     }
 
     /* Cash / Arqueo Table */
@@ -497,7 +513,7 @@
     }
 
     body.dark-mode .total-banner.final {
-      background: #000000;
+      background: #18181b;
       border-color: var(--accent);
     }
 
@@ -547,7 +563,7 @@
 
     .history-item.active-edit {
       border: 2px solid var(--warning);
-      background: rgba(217, 119, 6, 0.12);
+      background: rgba(217, 119, 6, 0.14);
     }
 
     .history-info strong {
@@ -600,7 +616,7 @@
     }
 
     body.dark-mode .btn-primary {
-      color: #000;
+      color: #09090b;
     }
 
     .btn-success {
@@ -646,7 +662,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.78);
+      background: rgba(0, 0, 0, 0.72);
       display: none;
       align-items: center;
       justify-content: center;
@@ -699,7 +715,7 @@
       top: 72px;
       left: 50%;
       transform: translateX(-50%);
-      background: #0f172a;
+      background: #18181b;
       color: #fff;
       padding: 11px 18px;
       border-radius: 12px;
@@ -868,16 +884,42 @@
           <button type="button" class="btn-sm" id="btnRecalcularPluses" style="background:var(--primary); color:#fff;">Recalcular</button>
         </div>
         <div class="pluses-grid">
-          <label class="plus-item" id="lbl_plusDietaComida"><input type="checkbox" id="plusDietaComida" data-autoplus="dietaComida"> Dieta Comida</label>
-          <label class="plus-item" id="lbl_plusTurnoPartido"><input type="checkbox" id="plusTurnoPartido" data-autoplus="turnoPartido"> Plus Turno Partido</label>
-          <label class="plus-item" id="lbl_plusDietaCena"><input type="checkbox" id="plusDietaCena" data-autoplus="dietaCena"> Dieta Cena</label>
-          <label class="plus-item" id="lbl_plusRemolque"><input type="checkbox" id="plusRemolque"> Plus Remolque Bicicletas</label>
-          <label class="plus-item" id="lbl_plusFestivo"><input type="checkbox" id="plusFestivo"> Plus Día Festivo</label>
-          <label class="plus-item" id="lbl_plusDispCorte"><input type="checkbox" id="plusDispCorte"> Disp. Corte Máximo</label>
-          <label class="plus-item" id="lbl_plusPartidoEsp"><input type="checkbox" id="plusPartidoEsp"> P. T. Partido Esp.</label>
-          <label class="plus-item" id="lbl_plusNocturnidad"><input type="checkbox" id="plusNocturnidad" data-autoplus="nocturnidad"> Plus Nocturnidad</label>
-          <label class="plus-item" id="lbl_plusKmsPart"><input type="checkbox" id="plusKmsPart"> Kms particulares</label>
-          <label class="plus-item" id="lbl_plusOtros"><input type="checkbox" id="plusOtros"> Otros Conceptos</label>
+          <label class="plus-item" id="lbl_plusDietaComida">
+            <span class="plus-item-left"><input type="checkbox" id="plusDietaComida" data-autoplus="dietaComida"> Dieta Comida</span>
+          </label>
+          <div class="plus-item" id="lbl_plusTurnoPartido">
+            <label class="plus-item-left" style="cursor:pointer; margin:0; color:inherit;">
+              <input type="checkbox" id="plusTurnoPartido" data-autoplus="turnoPartido"> Plus T. Partido
+            </label>
+            <input type="number" step="0.01" id="plusTurnoPartidoHoras" class="plus-hrs-input" value="0.00" title="Horas turno partido (2,00 a 4,00 h)">
+          </div>
+          <label class="plus-item" id="lbl_plusDietaCena">
+            <span class="plus-item-left"><input type="checkbox" id="plusDietaCena" data-autoplus="dietaCena"> Dieta Cena</span>
+          </label>
+          <label class="plus-item" id="lbl_plusRemolque">
+            <span class="plus-item-left"><input type="checkbox" id="plusRemolque"> Plus Remolque Bicis</span>
+          </label>
+          <label class="plus-item" id="lbl_plusFestivo">
+            <span class="plus-item-left"><input type="checkbox" id="plusFestivo"> Plus Día Festivo</span>
+          </label>
+          <label class="plus-item" id="lbl_plusDispCorte">
+            <span class="plus-item-left"><input type="checkbox" id="plusDispCorte"> Disp. Corte Máximo</span>
+          </label>
+          <label class="plus-item" id="lbl_plusPartidoEsp">
+            <span class="plus-item-left"><input type="checkbox" id="plusPartidoEsp"> P. T. Partido Esp.</span>
+          </label>
+          <div class="plus-item" id="lbl_plusNocturnidad">
+            <label class="plus-item-left" style="cursor:pointer; margin:0; color:inherit;">
+              <input type="checkbox" id="plusNocturnidad" data-autoplus="nocturnidad"> Nocturnidad
+            </label>
+            <input type="number" step="0.01" id="plusNocturnidadHoras" class="plus-hrs-input" value="0.00" title="Horas nocturnas (22:00-06:00)">
+          </div>
+          <label class="plus-item" id="lbl_plusKmsPart">
+            <span class="plus-item-left"><input type="checkbox" id="plusKmsPart"> Kms particulares</span>
+          </label>
+          <label class="plus-item" id="lbl_plusOtros">
+            <span class="plus-item-left"><input type="checkbox" id="plusOtros"> Otros Conceptos</span>
+          </label>
         </div>
         <div id="plusesMotivoMsg" class="auto-hint" style="margin-top:8px;"></div>
         <div class="form-group" style="margin-top:8px; margin-bottom:0;">
@@ -900,10 +942,10 @@
         <div style="margin-top:10px;">
           <label>Estación de Servicio</label>
           <div class="station-grid">
-            <label class="plus-item"><input type="checkbox" class="station-chk" value="Roselló"> Roselló</label>
-            <label class="plus-item"><input type="checkbox" class="station-chk" value="Hnos. Vivó"> Hnos. Vivó</label>
-            <label class="plus-item"><input type="checkbox" class="station-chk" value="ELEM (Ferreries)"> ELEM (Ferreries)</label>
-            <label class="plus-item"><input type="checkbox" class="station-chk" value="Mitjan Lloc"> Mitjan Lloc</label>
+            <label class="plus-item"><span class="plus-item-left"><input type="checkbox" class="station-chk" value="Roselló"> Roselló</span></label>
+            <label class="plus-item"><span class="plus-item-left"><input type="checkbox" class="station-chk" value="Hnos. Vivó"> Hnos. Vivó</span></label>
+            <label class="plus-item"><span class="plus-item-left"><input type="checkbox" class="station-chk" value="ELEM (Ferreries)"> ELEM (Ferreries)</span></label>
+            <label class="plus-item"><span class="plus-item-left"><input type="checkbox" class="station-chk" value="Mitjan Lloc"> Mitjan Lloc</span></label>
           </div>
         </div>
         <div class="form-group" style="margin-top:10px; margin-bottom:0;">
@@ -942,8 +984,8 @@
         <div class="form-group">
           <label>Solicitud Libro de Reclamaciones</label>
           <div class="grid-2" style="margin-top:4px;">
-            <label class="plus-item"><input type="radio" name="reclamacion" value="no" checked> No se ha producido</label>
-            <label class="plus-item"><input type="radio" name="reclamacion" value="si"> Sí se ha producido</label>
+            <label class="plus-item"><span class="plus-item-left"><input type="radio" name="reclamacion" value="no" checked> No se ha producido</span></label>
+            <label class="plus-item"><span class="plus-item-left"><input type="radio" name="reclamacion" value="si"> Sí se ha producido</span></label>
           </div>
         </div>
         <div class="grid-2">
@@ -981,7 +1023,7 @@
       <div class="card">
         <div class="card-header dark">
           <span>Arqueo Recaudación (Billetes y Monedas)</span>
-          <button type="button" class="btn-sm" id="btnLimpiarArqueo" style="background:#334155; color:#fff;">Poner a 0</button>
+          <button type="button" class="btn-sm" id="btnLimpiarArqueo" style="background:#3f3f46; color:#fff;">Poner a 0</button>
         </div>
         <div id="arqueoRows"></div>
 
@@ -1040,9 +1082,9 @@
       <h2>Parte Diario Pro v1.3.0</h2>
       <p>Motor calibrado con las reglas exactas de jornada, cortes, dietas y liquidación:</p>
       <ul>
+        <li><strong>Cálculo exacto de Horas Nocturnas y Partido:</strong> Apunta automáticamente los decimales exactos (ej. <code>0,25 h</code>, <code>0,50 h</code>, <code>1,00 h</code>) en <em>Nocturnidad</em> (22:00–06:00 en servicio) y en <em>Plus T. Partido</em> (mín. 2,00 h y máx. 4,00 h).</li>
         <li><strong>Memoria de Turnos Frecuentes:</strong> Cada nombre de turno que escribes en <em>Descripción Servicio</em> se guarda en el móvil para seleccionarlo al toque la próxima vez.</li>
-        <li><strong>Bloques continuos vs. Partido (120 min):</strong> Servicios seguidos o con hueco menor a 120 min forman un bloque continuo. Entre 120 y 240 min cuenta como turno partido (marca <em>Plus Turno Partido</em> si incluye <strong>R</strong> o <strong>D</strong>; nunca si es solo escolar <strong>Esc</strong>).</li>
-        <li><strong>Dieta Comida:</strong> Solo en turno de mañana/mediodía (empezando antes de las 13:00): bloque continuo de <strong>&gt; 9,00 h reales</strong> terminando a las 15:00 o después, o <strong>&gt; 6,00 h reales</strong> en la franja de mañana terminando a las 15:30 o después.</li>
+        <li><strong>Dieta Comida y Cena:</strong> Comida solo en turno de mañana/mediodía (&gt; 9h fin ≥15:00 o &gt; 6h fin ≥15:30). Cena con ≥ 6h desde las 13:00 y fin ≥ 23:00.</li>
         <li><strong>Guardado limpio y Edición:</strong> Al pulsar <em>Guardar Parte</em> se archiva en <em>Historial</em> y deja la hoja vacía para el siguiente día. Para modificar un parte ya guardado, ábrelo desde <em>Historial</em>.</li>
       </ul>
       <button type="button" id="btnEntendido" class="btn btn-success" style="width:100%;">¡Entendido!</button>
@@ -1171,7 +1213,7 @@
         document.getElementById('iconMoon').style.display = isDark ? 'none' : 'block';
         document.getElementById('iconSun').style.display = isDark ? 'block' : 'none';
         const metaTheme = document.querySelector('meta[name="theme-color"]');
-        if (metaTheme) metaTheme.setAttribute('content', isDark ? '#000000' : '#1e293b');
+        if (metaTheme) metaTheme.setAttribute('content', isDark ? '#18181b' : '#1e293b');
       }
 
       function formatNum(num) {
@@ -1200,10 +1242,10 @@
         return Math.max(0, Math.min(aEnd, bEnd) - Math.max(aStart, bStart));
       }
 
-      function hasNightTime(startStr, endStr) {
+      function getNightMinutes(startStr, endStr) {
         const m1 = timeToMinutes(startStr);
         const m2 = timeToMinutes(endStr);
-        if (m1 === null || m2 === null) return false;
+        if (m1 === null || m2 === null) return 0;
         let endAdj = m2;
         if (endAdj <= m1) endAdj += 1440;
 
@@ -1212,7 +1254,7 @@
           [1320, 1800],
           [2760, 2880]
         ];
-        return nightWindows.some(([nStart, nEnd]) => overlapMinutes(m1, endAdj, nStart, nEnd) > 0);
+        return nightWindows.reduce((acc, [nStart, nEnd]) => acc + overlapMinutes(m1, endAdj, nStart, nEnd), 0);
       }
 
       let toastTimer = null;
@@ -1592,14 +1634,19 @@
           document.getElementById('plusDietaCena').checked = autoCena;
         }
 
-        // Evaluar Nocturnidad (22:00 a 06:00) EXCLUSIVAMENTE sobre horarios de Servicio
-        const hasNight = tramos.some(t => hasNightTime(t.inicio, t.fin));
+        // Evaluar Nocturnidad (22:00 a 06:00) EXCLUSIVAMENTE sobre horarios de Servicio y calcular horas decimales
+        const totalNightMins = tramos.reduce((sum, t) => sum + getNightMinutes(t.inicio, t.fin), 0);
+        const nightHoursDec = Math.round((totalNightMins / 60) * 100) / 100;
+        const hasNight = totalNightMins > 0;
+
         if (!manualPluses.nocturnidad) {
           document.getElementById('plusNocturnidad').checked = hasNight;
+          document.getElementById('plusNocturnidadHoras').value = nightHoursDec.toFixed(2);
         }
 
-        // Evaluar Plus Turno Partido y Aviso de Corte (120 a 240 min / > 240 min)
+        // Evaluar Plus Turno Partido, Horas de Partido (mín 2,00 h, máx 4,00 h) y Aviso de Corte
         let autoPartido = false;
+        let partidoHoursDec = 0;
         let motivoPartido = '';
         let avisoCorteTexto = '';
 
@@ -1611,9 +1658,11 @@
 
           if (hasLineaOrDisc) {
             autoPartido = true;
-            motivoPartido = `Turno Partido (corte ${formatNum(corteHoras)}h, incluye R/D)`;
+            partidoHoursDec = Math.round(Math.min(4, Math.max(2, corteHoras)) * 100) / 100;
+            motivoPartido = `Turno Partido (${formatNum(partidoHoursDec)}h computadas, incluye R/D)`;
           } else if (allOnlyEscolar) {
             autoPartido = false;
+            partidoHoursDec = 0;
             motivoPartido = `Corte ${formatNum(corteHoras)}h solo Escolar (no se marca plus)`;
           }
 
@@ -1627,6 +1676,7 @@
 
         if (!manualPluses.turnoPartido) {
           document.getElementById('plusTurnoPartido').checked = autoPartido;
+          document.getElementById('plusTurnoPartidoHoras').value = partidoHoursDec.toFixed(2);
         }
 
         if (avisoCorteTexto) {
@@ -1640,7 +1690,7 @@
         const motivos = [];
         if (motivoComida) motivos.push(motivoComida);
         if (motivoCena) motivos.push(motivoCena);
-        if (hasNight) motivos.push('Nocturnidad en servicio (22:00-06:00)');
+        if (hasNight) motivos.push(`Nocturnidad (${formatNum(nightHoursDec)} h en servicio)`);
         if (motivoPartido) motivos.push(motivoPartido);
 
         const motivoEl = document.getElementById('plusesMotivoMsg');
@@ -1784,12 +1834,14 @@
           pluses: {
             dietaComida: document.getElementById('plusDietaComida').checked,
             turnoPartido: document.getElementById('plusTurnoPartido').checked,
+            turnoPartidoHoras: document.getElementById('plusTurnoPartidoHoras').value,
             dietaCena: document.getElementById('plusDietaCena').checked,
             remolque: document.getElementById('plusRemolque').checked,
             festivo: document.getElementById('plusFestivo').checked,
             dispCorte: document.getElementById('plusDispCorte').checked,
             partidoEsp: document.getElementById('plusPartidoEsp').checked,
             nocturnidad: document.getElementById('plusNocturnidad').checked,
+            nocturnidadHoras: document.getElementById('plusNocturnidadHoras').value,
             kmsPart: document.getElementById('plusKmsPart').checked,
             otros: document.getElementById('plusOtros').checked,
             remolqueDetalle: document.getElementById('plusRemolqueDetalle').value
@@ -1852,12 +1904,14 @@
         const p = data.pluses || {};
         document.getElementById('plusDietaComida').checked = !!p.dietaComida;
         document.getElementById('plusTurnoPartido').checked = !!p.turnoPartido;
+        document.getElementById('plusTurnoPartidoHoras').value = p.turnoPartidoHoras || '0.00';
         document.getElementById('plusDietaCena').checked = !!p.dietaCena;
         document.getElementById('plusRemolque').checked = !!p.remolque;
         document.getElementById('plusFestivo').checked = !!p.festivo;
         document.getElementById('plusDispCorte').checked = !!p.dispCorte;
         document.getElementById('plusPartidoEsp').checked = !!p.partidoEsp;
         document.getElementById('plusNocturnidad').checked = !!p.nocturnidad;
+        document.getElementById('plusNocturnidadHoras').value = p.nocturnidadHoras || '0.00';
         document.getElementById('plusKmsPart').checked = !!p.kmsPart;
         document.getElementById('plusOtros').checked = !!p.otros;
         document.getElementById('plusRemolqueDetalle').value = p.remolqueDetalle || '';
@@ -1997,8 +2051,12 @@
         const plusesActivos = [];
         if (data.pluses.dietaComida) plusesActivos.push('Dieta Comida');
         if (data.pluses.dietaCena) plusesActivos.push('Dieta Cena');
-        if (data.pluses.turnoPartido) plusesActivos.push('Plus Turno Partido');
-        if (data.pluses.nocturnidad) plusesActivos.push('Plus Nocturnidad');
+        if (data.pluses.turnoPartido) {
+          plusesActivos.push(`Plus Turno Partido (${formatNum(data.pluses.turnoPartidoHoras)} h)`);
+        }
+        if (data.pluses.nocturnidad) {
+          plusesActivos.push(`Plus Nocturnidad (${formatNum(data.pluses.nocturnidadHoras)} h)`);
+        }
         if (data.pluses.festivo) plusesActivos.push('Plus Festivo');
         if (data.pluses.remolque) plusesActivos.push('Plus Remolque');
         if (data.pluses.dispCorte) plusesActivos.push('Disp. Corte Máx.');
@@ -2050,7 +2108,6 @@
         buildUI();
         await initDB();
 
-        // Cargar nombres de turnos guardados anteriormente en IndexedDB
         const turnosCfg = await dbGet(STORE_CONFIG, 'saved_turnos_desc');
         if (turnosCfg && Array.isArray(turnosCfg.value)) {
           savedTurnosList = turnosCfg.value;
@@ -2064,7 +2121,7 @@
           const nextDark = !document.body.classList.contains('dark-mode');
           applyTheme(nextDark);
           await dbPut(STORE_CONFIG, { key: 'dark_mode', value: nextDark });
-          showToast(nextDark ? 'Modo oscuro activado' : 'Modo claro activado');
+          showToast(nextDark ? 'Modo gris oscuro activado' : 'Modo claro activado');
         });
 
         const tutSeen = await dbGet(STORE_CONFIG, 'tutorial_seen_v1');
@@ -2094,15 +2151,35 @@
           chk.addEventListener('change', () => {
             const key = chk.dataset.autoplus;
             manualPluses[key] = true;
+            if (key === 'nocturnidad' && !chk.checked) {
+              document.getElementById('plusNocturnidadHoras').value = '0.00';
+            }
+            if (key === 'turnoPartido' && !chk.checked) {
+              document.getElementById('plusTurnoPartidoHoras').value = '0.00';
+            }
             updatePlusHighlights();
           });
+        });
+
+        document.getElementById('plusNocturnidadHoras').addEventListener('input', () => {
+          manualPluses.nocturnidad = true;
+          const val = parseFloat(document.getElementById('plusNocturnidadHoras').value) || 0;
+          document.getElementById('plusNocturnidad').checked = val > 0;
+          updatePlusHighlights();
+        });
+
+        document.getElementById('plusTurnoPartidoHoras').addEventListener('input', () => {
+          manualPluses.turnoPartido = true;
+          const val = parseFloat(document.getElementById('plusTurnoPartidoHoras').value) || 0;
+          document.getElementById('plusTurnoPartido').checked = val > 0;
+          updatePlusHighlights();
         });
 
         document.getElementById('btnRecalcularPluses').addEventListener('click', async () => {
           manualPluses = { dietaComida: false, dietaCena: false, turnoPartido: false, nocturnidad: false };
           recalcularTodo();
           await dbPut(STORE_CONFIG, { key: 'current_draft', value: collectFormData() });
-          showToast('Pluses y dietas recalculados');
+          showToast('Pluses y horas recalculados');
         });
 
         document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -2130,7 +2207,6 @@
         document.body.addEventListener('input', handleAutoSave);
         document.body.addEventListener('change', handleAutoSave);
 
-        // Guardar o Actualizar parte y dejar la hoja limpia lista para el siguiente día
         document.getElementById('btnGuardarParte').addEventListener('click', async () => {
           if (!validarParteObligatorio()) return;
 
